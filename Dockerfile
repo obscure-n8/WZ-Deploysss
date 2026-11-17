@@ -12,4 +12,6 @@ WORKDIR /usr/src/app
 
 COPY . .
 
+RUN find bot/ -type f -name "*.py" -exec sed -i 's/quote=True,//g; s/quote=True//g; s/disable_web_page_preview=True,//g; s/disable_web_page_preview=True//g' {} +
+
 ENTRYPOINT ["bash", "start.sh"]
