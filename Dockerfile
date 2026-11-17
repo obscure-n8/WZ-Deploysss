@@ -1,6 +1,7 @@
 FROM mysterysd/wzmlx:wzadv
 
-RUN apt-get update && apt-get install -y aria2 qbittorrent-nox ffmpeg rclone && \
+RUN apt-get update && apt-get install -y --reinstall aria2 && \
+    apt-get install -y qbittorrent-nox ffmpeg rclone && \
     mv /usr/bin/aria2c /usr/bin/blitzfetcher && \
     mv /usr/bin/qbittorrent-nox /usr/bin/stormtorrent && \
     mv /usr/bin/ffmpeg /usr/bin/mediaforge && \
