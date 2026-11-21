@@ -12,6 +12,9 @@ for p in glob.glob("/wzvenv/lib/python*/site-packages/pyrogram/raw/core/tl_objec
 for p in glob.glob("/wzvenv/lib/python*/site-packages/pyrogram/client.py"):
     s = open(p).read().replace("for peer in peers:", "if not isinstance(peers, list): return\n        for peer in peers:")
     open(p, "w").write(s)
+for p in glob.glob("/wzvenv/lib/python*/site-packages/pyrogram/methods/messages/*.py"):
+    s = open(p).read().replace("in r.users", "in (r.users or [])").replace("in r.chats", "in (r.chats or [])")
+    open(p, "w").write(s)
 '
 sed -i 's/self\.user_transmission = False/pass/g' bot/helper/common.py
 sed -i 's/self\.split_size = 2097152000/self.split_size = 4190000000/g' bot/helper/common.py
